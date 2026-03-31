@@ -3,288 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mapeo de Campos — Tabla Comparativa · ALTO Alliance</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Mapeo de Campos — ALTO Alliance</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy:       #1A354F;
-    --blue:       #0276BD;
-    --red:        #EE3E3D;
-    --white:      #FFFFFF;
-    --bg:         #F4F6F8;
-    --surface:    #FFFFFF;
-    --surface2:   #EEF2F5;
-    --border:     #D8DFE6;
-    --border2:    #C0CAD4;
-    --text:       #1A354F;
-    --text2:      #4A6070;
-    --text3:      #8A9BAB;
-    --ev-bg:      #E0EEFA; --ev-tx: #0C3572;
-    --lf-bg:      #D6F0E6; --lf-tx: #0A4A2E;
-    --yes-bg:     #D1F5E4; --yes-tx: #065F46;
-    --par-bg:     #FEF3C7; --par-tx: #92400E;
-    --com-bg:     #E0EEFA; --com-tx: #0C3572;
-    --dif-bg:     #FEF3C7; --dif-tx: #92400E;
-  }
+:root{
+  --navy:#1A354F;--blue:#0276BD;--red:#EE3E3D;
+  --bg:#F2F5F8;--surface:#FFFFFF;--surface2:#EDF1F5;
+  --border:#D6DDE5;--text:#1A354F;--text2:#4A6070;--text3:#8A9BAB;
+  --ev-bg:#DEEEFA;--ev-tx:#0B3066;
+  --lf-bg:#D4EFE3;--lf-tx:#094829;
+  --yes-bg:#CFFADF;--yes-tx:#055C40;
+  --par-bg:#FEF2C0;--par-tx:#8B4000;
+  --r:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* TOP BAR */
+.topbar{background:var(--navy);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,0.2)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:30px;height:30px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.logo-name{font-size:15px;font-weight:600;color:#fff;letter-spacing:-0.2px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.badge-date{font-size:10px;padding:3px 9px;border-radius:99px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);font-family:'DM Mono',monospace;display:none}
+@media(min-width:480px){.badge-date{display:inline-block}}
+.btn-print{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,0.28);background:transparent;color:#fff;cursor:pointer;transition:all .15s}
+.btn-print:hover{background:rgba(255,255,255,0.12)}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+/* PAGE */
+.page{max-width:1240px;margin:0 auto;padding:24px 16px 60px}
+@media(min-width:640px){.page{padding:28px 24px 60px}}
+@media(min-width:1024px){.page{padding:32px 32px 60px}}
 
-  /* ── TOP BAR ── */
-  .topbar {
-    background: var(--navy);
-    padding: 0 40px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-  }
-  .topbar-left { display: flex; align-items: center; gap: 20px; }
-  .logo {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 18px; font-weight: 600; color: var(--white);
-    letter-spacing: -0.3px;
-  }
-  .logo-mark {
-    width: 32px; height: 32px; background: var(--blue);
-    border-radius: 8px; display: flex; align-items: center;
-    justify-content: center; font-size: 13px; font-weight: 700;
-    color: white;
-  }
-  .topbar-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.18); }
-  .topbar-title { font-size: 13px; color: rgba(255,255,255,0.72); font-weight: 400; }
-  .topbar-right { display: flex; align-items: center; gap: 12px; }
-  .badge-period {
-    font-size: 11px; padding: 4px 10px; border-radius: 99px;
-    background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8);
-    font-family: 'DM Mono', monospace; letter-spacing: 0.02em;
-  }
-  .btn-print {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px; font-weight: 500;
-    padding: 7px 16px; border-radius: 7px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: transparent; color: white;
-    cursor: pointer; transition: all 0.15s;
-  }
-  .btn-print:hover { background: rgba(255,255,255,0.12); }
+/* HEADER */
+.header{margin-bottom:24px}
+h1{font-size:20px;font-weight:600;color:var(--navy);letter-spacing:-0.3px;line-height:1.25}
+@media(min-width:640px){h1{font-size:24px}}
+@media(min-width:1024px){h1{font-size:27px}}
+.header-sub{font-size:12px;color:var(--text3);margin-top:6px}
+.accent-line{height:3px;width:40px;background:var(--blue);border-radius:99px;margin-top:10px}
 
-  /* ── PAGE ── */
-  .page { max-width: 1240px; margin: 0 auto; padding: 32px 32px 60px; }
+/* STAT CARDS */
+.stats{display:grid;gap:10px;margin-bottom:24px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;border-top:3px solid var(--blue);transition:transform .15s,box-shadow .15s}
+.stat-card:nth-child(2){border-top-color:var(--navy)}
+.stat-card:nth-child(3){border-top-color:#0E9F6E}
+.stat-card:nth-child(4){border-top-color:var(--red)}
+.stat-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,53,79,0.09)}
+.stat-num{font-size:28px;font-weight:600;color:var(--navy);letter-spacing:-1px;line-height:1;margin-bottom:4px}
+@media(min-width:640px){.stat-num{font-size:32px}}
+.stat-label{font-size:11.5px;font-weight:500;color:var(--text2);margin-bottom:2px}
+.stat-sub{font-size:10.5px;color:var(--text3)}
 
-  /* ── HEADER ── */
-  .header { margin-bottom: 28px; }
-  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 6px; }
-  h1 { font-size: 26px; font-weight: 600; color: var(--navy); letter-spacing: -0.4px; line-height: 1.2; }
-  .header-sub { font-size: 13px; color: var(--text3); }
-  .accent-line {
-    height: 3px; width: 48px; background: var(--blue);
-    border-radius: 99px; margin: 10px 0 0;
-  }
+/* CONTROLS */
+.controls{margin-bottom:14px}
+.controls-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;background:var(--surface2);padding:4px;border-radius:10px;border:1px solid var(--border)}
+.tab{padding:6px 12px;border-radius:7px;font-size:11.5px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all .15s;white-space:nowrap}
+.tab:hover{color:var(--navy);background:rgba(2,118,189,0.07)}
+.tab.active{background:var(--navy);color:#fff}
+.controls-bottom{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.search-wrap{position:relative;flex:1;min-width:160px;max-width:260px}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none}
+.search{width:100%;font-family:'DM Sans',sans-serif;font-size:12px;padding:8px 12px 8px 32px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);outline:none;transition:border-color .15s}
+.search:focus{border-color:var(--blue)}
+.search::placeholder{color:var(--text3)}
+.counter{font-size:11.5px;color:var(--text3);font-family:'DM Mono',monospace;background:var(--surface2);border:1px solid var(--border);padding:7px 11px;border-radius:8px;white-space:nowrap;flex-shrink:0}
+.counter span{color:var(--text2);font-weight:500}
 
-  /* ── STAT CARDS ── */
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
-  .stat-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 16px 18px;
-    border-top: 3px solid var(--blue);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,53,79,0.10); }
-  .stat-card:nth-child(2) { border-top-color: var(--navy); }
-  .stat-card:nth-child(3) { border-top-color: #0E9F6E; }
-  .stat-card:nth-child(4) { border-top-color: var(--red); }
-  .stat-num { font-size: 32px; font-weight: 600; color: var(--navy); letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
-  .stat-label { font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 2px; }
-  .stat-sub { font-size: 11px; color: var(--text3); }
+/* TABLE WRAPPER */
+.table-outer{border:1px solid var(--border);border-radius:var(--r);background:var(--surface);overflow:hidden;box-shadow:0 2px 12px rgba(26,53,79,0.06);animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ── CONTROLS ── */
-  .controls {
-    display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap;
-    gap: 12px; margin-bottom: 16px;
-  }
-  .tabs {
-    display: flex; gap: 4px;
-    background: var(--surface2);
-    padding: 4px; border-radius: 10px;
-    border: 1px solid var(--border);
-  }
-  .tab {
-    padding: 7px 16px; border-radius: 7px;
-    font-size: 12px; font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer; border: none;
-    background: transparent; color: var(--text2);
-    transition: all 0.15s; white-space: nowrap;
-  }
-  .tab:hover { color: var(--navy); background: rgba(2,118,189,0.06); }
-  .tab.active { background: var(--navy); color: white; }
+/* DESKTOP TABLE */
+.table-desktop{display:none;overflow-x:auto}
+@media(min-width:768px){.table-desktop{display:block}}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:700px}
+colgroup col:nth-child(1){width:22%}
+colgroup col:nth-child(2){width:9%}
+colgroup col:nth-child(3){width:9%}
+colgroup col:nth-child(4){width:15%}
+colgroup col:nth-child(5){width:15%}
+colgroup col:nth-child(6){width:15%}
+colgroup col:nth-child(7){width:15%}
+thead tr{background:var(--navy)}
+th{padding:11px 12px;text-align:left;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.72);white-space:nowrap}
+th:first-child{padding-left:16px}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover td{background:#EEF4FB !important}
+tbody tr:nth-child(odd) td{background:var(--surface)}
+tbody tr:nth-child(even) td{background:#F6F9FB}
+td{padding:10px 12px;vertical-align:middle}
+td:first-child{padding-left:16px}
+.fname{font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.3}
+.fsub{font-size:10.5px;color:var(--text3);margin-top:2px}
+.tipo{font-size:11px;color:var(--text3)}
+.dash{font-size:14px;color:var(--text3);font-family:'DM Mono',monospace}
 
-  .controls-right { display: flex; align-items: center; gap: 10px; }
-  .search-wrap { position: relative; }
-  .search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
-  .search {
-    font-family: 'DM Sans', sans-serif; font-size: 12px;
-    padding: 8px 12px 8px 32px;
-    border: 1px solid var(--border); border-radius: 8px;
-    background: var(--surface); color: var(--text);
-    outline: none; width: 210px; transition: border-color 0.15s;
-  }
-  .search:focus { border-color: var(--blue); }
-  .search::placeholder { color: var(--text3); }
-  .counter {
-    font-size: 12px; color: var(--text3);
-    font-family: 'DM Mono', monospace;
-    background: var(--surface2); border: 1px solid var(--border);
-    padding: 7px 12px; border-radius: 8px;
-  }
-  .counter span { color: var(--text2); font-weight: 500; }
+/* MOBILE CARDS */
+.cards-mobile{display:flex;flex-direction:column}
+@media(min-width:768px){.cards-mobile{display:none}}
+.mcard{border-bottom:1px solid var(--border);padding:14px 16px;background:var(--surface)}
+.mcard:nth-child(even){background:#F6F9FB}
+.mcard:last-child{border-bottom:none}
+.mcard-name{font-size:13px;font-weight:600;color:var(--navy);line-height:1.3;margin-bottom:2px}
+.mcard-sub{font-size:10.5px;color:var(--text3);margin-bottom:8px}
+.mcard-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.mcard-tipo{font-size:10.5px;color:var(--text3);background:var(--surface2);padding:3px 7px;border-radius:5px;border:1px solid var(--border)}
+.mcard-countries{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mcard-country{display:flex;flex-direction:column;gap:4px}
+.mcard-flag{font-size:10px;color:var(--text3);font-weight:500}
 
-  /* ── TABLE ── */
-  .table-wrap {
-    border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-    background: var(--surface);
-    box-shadow: 0 2px 12px rgba(26,53,79,0.06);
-  }
-  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  colgroup col:nth-child(1) { width: 22%; }
-  colgroup col:nth-child(2) { width: 9%; }
-  colgroup col:nth-child(3) { width: 9%; }
-  colgroup col:nth-child(4) { width: 15%; }
-  colgroup col:nth-child(5) { width: 15%; }
-  colgroup col:nth-child(6) { width: 15%; }
-  colgroup col:nth-child(7) { width: 15%; }
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:99px;font-size:10.5px;font-weight:600;white-space:nowrap;line-height:1.4}
+.p-ev{background:var(--ev-bg);color:var(--ev-tx)}
+.p-lf{background:var(--lf-bg);color:var(--lf-tx)}
+.p-yes{background:var(--yes-bg);color:var(--yes-tx)}
+.p-par{background:var(--par-bg);color:var(--par-tx)}
 
-  thead tr { background: var(--navy); }
-  th {
-    padding: 11px 12px; text-align: left;
-    font-size: 10.5px; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-  }
-  th:first-child { padding-left: 16px; }
+/* EMPTY */
+.empty{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px}
 
-  tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.1s;
-  }
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover td { background: #F0F5FA !important; }
-  tbody tr:nth-child(odd) td { background: var(--surface); }
-  tbody tr:nth-child(even) td { background: #F7F9FB; }
+/* LEGEND */
+.legend{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap;font-size:11.5px;color:var(--text2);align-items:center}
+.leg{display:flex;align-items:center;gap:6px}
+.leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
 
-  td { padding: 10px 12px; vertical-align: middle; }
-  td:first-child { padding-left: 16px; }
+/* FOOTER */
+.footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:11px;color:var(--text3);line-height:1.7}
+.footer-right{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;white-space:nowrap}
 
-  .fname { font-size: 12.5px; font-weight: 600; color: var(--navy); line-height: 1.3; }
-  .fsub  { font-size: 10.5px; color: var(--text3); margin-top: 2px; line-height: 1.3; }
-
-  .pill {
-    display: inline-flex; align-items: center;
-    padding: 3px 9px; border-radius: 99px;
-    font-size: 10.5px; font-weight: 600;
-    white-space: nowrap; line-height: 1.4;
-  }
-  .p-ev  { background: var(--ev-bg);  color: var(--ev-tx); }
-  .p-lf  { background: var(--lf-bg);  color: var(--lf-tx); }
-  .p-yes { background: var(--yes-bg); color: var(--yes-tx); }
-  .p-par { background: var(--par-bg); color: var(--par-tx); }
-
-  .tipo { font-size: 11px; color: var(--text3); }
-  .dash  { font-size: 14px; color: var(--text3); font-family: 'DM Mono', monospace; }
-
-  /* ── LEGEND ── */
-  .legend {
-    display: flex; gap: 20px; margin-top: 14px;
-    flex-wrap: wrap; font-size: 11.5px; color: var(--text2);
-    align-items: center;
-  }
-  .leg { display: flex; align-items: center; gap: 6px; }
-  .leg-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-
-  /* ── EMPTY STATE ── */
-  .empty {
-    text-align: center; padding: 48px 20px;
-    color: var(--text3); font-size: 14px;
-  }
-
-  /* ── FOOTER ── */
-  .footer {
-    margin-top: 28px; padding-top: 20px;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between;
-    align-items: center; flex-wrap: wrap; gap: 12px;
-  }
-  .footer-left { font-size: 11px; color: var(--text3); line-height: 1.6; }
-  .footer-right { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
-
-  /* ── PRINT ── */
-  @media print {
-    .topbar { position: static; box-shadow: none; }
-    .controls { display: none; }
-    .btn-print { display: none; }
-    .page { padding: 16px; }
-    .stats { break-inside: avoid; }
-    .table-wrap { box-shadow: none; }
-    body { background: white; }
-  }
-
-  /* ── ANIMATIONS ── */
-  .table-wrap { animation: fadeUp 0.3s ease both; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  tbody tr { animation: fadeIn 0.2s ease both; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* PRINT */
+@media print{
+  .topbar{position:static;box-shadow:none}
+  .controls,.btn-print{display:none}
+  .cards-mobile{display:none}
+  .table-desktop{display:block!important}
+  body{background:#fff}
+  .table-outer{box-shadow:none;border-radius:0}
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
-  <div class="topbar-left">
-    <div class="logo">
-      <div class="logo-mark">A</div>
-      ALTO Alliance
-    </div>
-    <div class="topbar-divider"></div>
-    <div class="topbar-title">Mapeo de Campos — Tabla Comparativa por País</div>
-  </div>
+  <a class="logo" href="#">
+    <div class="logo-mark">A</div>
+    <div class="logo-name">ALTO Alliance</div>
+  </a>
   <div class="topbar-right">
-    <div class="badge-period">2026-03-30</div>
-    <button class="btn-print" onclick="window.print()">Imprimir / PDF</button>
+    <div class="badge-date">2026-03-30</div>
+    <button class="btn-print" onclick="window.print()">↓ PDF</button>
   </div>
 </div>
 
 <div class="page">
-
-  <!-- HEADER -->
   <div class="header">
-    <div class="header-top">
-      <div>
-        <h1>Tabla Comparativa de Campos<br>por País y Módulo</h1>
-        <div class="accent-line"></div>
-      </div>
-    </div>
-    <div class="header-sub" style="margin-top:12px;">
-      Módulos: Eventos Alliance + LegalFile &nbsp;·&nbsp; 4 países &nbsp;·&nbsp; 35 campos documentados
-    </div>
+    <h1>Tabla Comparativa de Campos<br>por País y Módulo</h1>
+    <div class="accent-line"></div>
+    <div class="header-sub">Módulos: Eventos Alliance + LegalFile &nbsp;·&nbsp; 4 países &nbsp;·&nbsp;</div>
   </div>
 
-  <!-- STAT CARDS -->
   <div class="stats">
     <div class="stat-card">
       <div class="stat-num">~81</div>
@@ -308,66 +190,58 @@
     </div>
   </div>
 
-  <!-- CONTROLS -->
   <div class="controls">
-    <div class="tabs">
-      <button class="tab active" data-filter="all">Todos</button>
-      <button class="tab" data-filter="ev">Solo Eventos</button>
-      <button class="tab" data-filter="lf">Solo LegalFile</button>
-      <button class="tab" data-filter="com">Campos comunes</button>
-      <button class="tab" data-filter="dif">Solo en algunos</button>
+    <div class="controls-top">
+      <div class="tabs">
+        <button class="tab active" data-filter="all">Todos</button>
+        <button class="tab" data-filter="ev">Eventos</button>
+        <button class="tab" data-filter="lf">LegalFile</button>
+        <button class="tab" data-filter="com">Comunes</button>
+        <button class="tab" data-filter="dif">Solo en algunos</button>
+      </div>
     </div>
-    <div class="controls-right">
+    <div class="controls-bottom">
       <div class="search-wrap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A9BAB" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A9BAB" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input class="search" type="search" id="searchInput" placeholder="Buscar campo…">
       </div>
       <div class="counter"><span id="counter">35</span> campos</div>
     </div>
   </div>
 
-  <!-- TABLE -->
-  <div class="table-wrap">
-    <table id="mainTable">
-      <colgroup><col><col><col><col><col><col><col></colgroup>
-      <thead>
-        <tr>
-          <th>Campo / Sección</th>
-          <th>Módulo</th>
-          <th>Tipo</th>
-          <th>🇺🇸 USA</th>
-          <th>🇲🇽 México</th>
-          <th>🇨🇴 Colombia</th>
-          <th>🇨🇱 Chile</th>
-        </tr>
-      </thead>
-      <tbody id="tbody"></tbody>
-    </table>
+  <div class="table-outer">
+    <div class="table-desktop">
+      <table>
+        <colgroup><col><col><col><col><col><col><col></colgroup>
+        <thead>
+          <tr>
+            <th>Campo / Sección</th><th>Módulo</th><th>Tipo</th>
+            <th>🇺🇸 USA</th><th>🇲🇽 México</th><th>🇨🇴 Colombia</th><th>🇨🇱 Chile</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-desktop"></tbody>
+      </table>
+    </div>
+    <div class="cards-mobile" id="cards-mobile"></div>
   </div>
 
-  <!-- LEGEND -->
   <div class="legend">
-    <div class="leg"><div class="leg-dot" style="background:var(--yes-bg);border:1px solid #9EE6C4"></div>✓ Presente (con o sin requerido)</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--yes-bg);border:1px solid #9EE6C4"></div>✓ Presente</div>
     <div class="leg"><div class="leg-dot" style="background:var(--par-bg);border:1px solid #F6D860"></div>~ Equivalente parcial</div>
-    <div class="leg"><div class="leg-dot" style="background:#E8ECF0;border:1px solid var(--border)"></div>— No aplica en este país</div>
+    <div class="leg"><div class="leg-dot" style="background:#E4EAF0;border:1px solid var(--border)"></div>— No aplica</div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div class="footer-left">
-      <strong>ALTO Alliance</strong> · Mapeo de Campos Consolidado<br>
-      Módulos: Eventos Alliance + LegalFile · Fecha de documento: 2026-03-30<br>
-      Colombia y Chile usan flujo procesal condicional en 6 etapas · USA y México usan tabs planos
+      <strong>ALTO Alliance</strong> · Mapeo de Campos Consolidado · 2026-03-30<br>
+      Colombia y Chile: flujo procesal condicional 6 etapas &nbsp;·&nbsp; USA y México: tabs planos
     </div>
-    <div class="footer-right">v2.0 · 2026-03-31</div>
+    <div class="footer-right">v2.1</div>
   </div>
-
 </div>
 
 <script>
-// ── DATA ─────────────────────────────────────────────────────────
-// [cat, scope, name, sub, modulo, tipo, usa, mex, col, chi]
-const ROWS = [
+const ROWS=[
   ["ev","com","Nombre del producto","Daños y pérdidas","Eventos","Texto","✓ Req.","✓ Req.","✓ Req.","✓ Req."],
   ["ev","com","Precio unitario","","Eventos","Número","✓ Req.","✓ Req.","✓ Req.","✓ Req."],
   ["ev","com","Cantidad perdida / recuperada","","Eventos","Número","✓ Req.","✓ Req.","✓ Req.","✓ Req."],
@@ -405,72 +279,48 @@ const ROWS = [
   ["lf","dif","Restitución (monto + estado)","","LegalFile","Núm./Dropdown","✓","—","—","~ Acuerdo rep."],
 ];
 
-// ── RENDER ────────────────────────────────────────────────────────
-function statusCell(val) {
-  if (val === "—") return `<span class="dash">—</span>`;
-  const cls = val.startsWith("✓") ? "p-yes" : "p-par";
-  return `<span class="pill ${cls}">${val}</span>`;
+const FLAGS=["🇺🇸 USA","🇲🇽 México","🇨🇴 Colombia","🇨🇱 Chile"];
+
+function sc(v){
+  if(v==="—") return`<span class="dash">—</span>`;
+  return`<span class="pill ${v.startsWith("✓")?"p-yes":"p-par"}">${v}</span>`;
 }
 
-function render(filter, search) {
-  const q = search.toLowerCase().trim();
-  const filtered = ROWS.filter(r => {
-    const matchFilter =
-      filter === "all"  ? true :
-      filter === "ev"   ? r[0] === "ev" :
-      filter === "lf"   ? r[0] === "lf" :
-      filter === "com"  ? r[1] === "com" :
-      filter === "dif"  ? r[1] === "dif" : true;
-    const matchSearch = !q || r[2].toLowerCase().includes(q) || r[3].toLowerCase().includes(q) ||
-                        r[4].toLowerCase().includes(q) || r[5].toLowerCase().includes(q) ||
-                        r[6].toLowerCase().includes(q) || r[7].toLowerCase().includes(q) ||
-                        r[8].toLowerCase().includes(q) || r[9].toLowerCase().includes(q);
-    return matchFilter && matchSearch;
+function render(filter,search){
+  const q=search.toLowerCase().trim();
+  const f=ROWS.filter(r=>{
+    const mf=filter==="all"||(filter==="ev"&&r[0]==="ev")||(filter==="lf"&&r[0]==="lf")||(filter==="com"&&r[1]==="com")||(filter==="dif"&&r[1]==="dif");
+    const ms=!q||[...r].some(v=>v.toLowerCase().includes(q));
+    return mf&&ms;
   });
-
-  document.getElementById("counter").textContent = filtered.length;
-
-  if (filtered.length === 0) {
-    document.getElementById("tbody").innerHTML =
-      `<tr><td colspan="7"><div class="empty">No se encontraron campos para esta búsqueda.</div></td></tr>`;
+  document.getElementById("counter").textContent=f.length;
+  if(!f.length){
+    document.getElementById("tbody-desktop").innerHTML=`<tr><td colspan="7"><div class="empty">No se encontraron campos.</div></td></tr>`;
+    document.getElementById("cards-mobile").innerHTML=`<div class="empty">No se encontraron campos.</div>`;
     return;
   }
-
-  document.getElementById("tbody").innerHTML = filtered.map((r, i) => {
-    const modCls = r[4] === "Eventos" ? "p-ev" : "p-lf";
-    const sub = r[3] ? `<div class="fsub">${r[3]}</div>` : "";
-    return `<tr style="animation-delay:${i*0.015}s">
-      <td><div class="fname">${r[2]}</div>${sub}</td>
-      <td><span class="pill ${modCls}">${r[4]}</span></td>
-      <td><span class="tipo">${r[5]}</span></td>
-      <td>${statusCell(r[6])}</td>
-      <td>${statusCell(r[7])}</td>
-      <td>${statusCell(r[8])}</td>
-      <td>${statusCell(r[9])}</td>
-    </tr>`;
+  // Desktop
+  document.getElementById("tbody-desktop").innerHTML=f.map(r=>{
+    const mc=r[4]==="Eventos"?"p-ev":"p-lf";
+    return`<tr><td><div class="fname">${r[2]}</div>${r[3]?`<div class="fsub">${r[3]}</div>`:""}</td><td><span class="pill ${mc}">${r[4]}</span></td><td><span class="tipo">${r[5]}</span></td><td>${sc(r[6])}</td><td>${sc(r[7])}</td><td>${sc(r[8])}</td><td>${sc(r[9])}</td></tr>`;
+  }).join("");
+  // Mobile
+  document.getElementById("cards-mobile").innerHTML=f.map(r=>{
+    const mc=r[4]==="Eventos"?"p-ev":"p-lf";
+    const countries=[r[6],r[7],r[8],r[9]].map((v,i)=>`<div class="mcard-country"><div class="mcard-flag">${FLAGS[i]}</div>${sc(v)}</div>`).join("");
+    return`<div class="mcard"><div class="mcard-name">${r[2]}</div>${r[3]?`<div class="mcard-sub">${r[3]}</div>`:""}<div class="mcard-meta"><span class="pill ${mc}">${r[4]}</span><span class="mcard-tipo">${r[5]}</span></div><div class="mcard-countries">${countries}</div></div>`;
   }).join("");
 }
 
-// ── EVENTS ────────────────────────────────────────────────────────
-let currentFilter = "all";
-let currentSearch = "";
-
-document.querySelectorAll(".tab").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    currentFilter = btn.dataset.filter;
-    render(currentFilter, currentSearch);
+let cf="all",cs="";
+document.querySelectorAll(".tab").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");cf=b.dataset.filter;render(cf,cs);
   });
 });
-
-document.getElementById("searchInput").addEventListener("input", e => {
-  currentSearch = e.target.value;
-  render(currentFilter, currentSearch);
-});
-
-// Initial render
-render("all", "");
+document.getElementById("searchInput").addEventListener("input",e=>{cs=e.target.value;render(cf,cs)});
+render("all","");
 </script>
 </body>
 </html>
